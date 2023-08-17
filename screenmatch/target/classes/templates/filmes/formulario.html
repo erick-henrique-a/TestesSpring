@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="PT-BR"
+xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastro De filmes</title>
+        <link th:href="@{/style.css}" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#">
+                    <img src="https://e7.pngegg.com/pngimages/931/804/png-clipart-spring-framework-software-framework-java-application-framework-web-framework-java-leaf-text.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/filmes/listagem">Listagem <span class="sr-only">(Página atual)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/filmes/formulario">Formulário</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <h1 class="titulo">Cadastro de filmes</h1>
+            <form class="form-group" method="post" action="/filmes">
+                <input type="hidden" name="_method" value="put" th:if="${filme != null}">
+                <input type="hidden" name="id" th:value="${filme?.id}">
+                <div></div>
+                <div class="div-form">
+                    <label class="label" for="nome">Nome:</label>
+                    <input class="input-box form-control" id="nome" name="nome" th:value="${filme?.nome}">
+                    <br>
+
+                    <label for="duracao">Duracao em minutos:</label>
+                    <input class="input-box form-control" id="duracao" name="duracao" th:value="${filme?.duracao_em_minutos}">
+                    <br>
+
+                    <label for="ano">Ano:</label>
+                    <input class="input-box form-control" id="ano" name="ano" th:value="${filme?.ano_lancamento}">
+                    <br>
+
+                    <label for="genero">Genero:</label>
+                    <input class="input-box form-control" id="genero" name="genero" th:value="${filme?.genero}">
+                    <br>
+
+                    <input class="input-box btn" type="submit" value="Cadastrar">
+                </div>
+                <div></div>
+
+            </form>
+        </main>
+
+        <footer>
+            <h1>Spring</h1>
+        </footer>
+    </body>
+
+</html>

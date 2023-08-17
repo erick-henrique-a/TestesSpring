@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+:root{
+    --cor-backg-top-end: #102C57;
+    --cor-text-top-end: white;
+
+    --cor-backg-body: #F8F0E5;
+
+    --cor-backg-bottom-end: #102C57;
+    --cor-text-bottom-end: white;
+}
+.navbar{
+    background-color: var(--cor-backg-top-end)!important;
+}
+.nav-link{
+    color: var(--cor-text-top-end)!important;
+}
+.navbar-brand{
+    color: var(--cor-text-top-end)!important;
+}
+.footer-texto{
+    color: var(--cor-text-bottom-end)!important;
+    font-family: 'Poppins', sans-serif;
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+}
+.sub-titulo{
+    display: flex;
+    justify-content: center;
+}
+.itens-nav{
+    display: flex;
+    justify-content: flex-end;
+}
+.corpo-texto{
+    font-family: 'Poppins', sans-serif;
+}
+main{
+    padding: 1%;
+    background-color: var(--cor-backg-body);
+}
+.dados{
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.certificado{
+    display: flex;
+    flex-direction: column;
+}
+.flecsbox{
+    display: flex;
+    justify-content: center;
+}
+.prampers{
+    display: flex;
+    justify-content: center
+}
+.bloco{
+    display: flex;
+    flex-direction: column;
+}
+.legenda{
+    display: flex;
+    flex-direction: column;
+}
+.contatos{
+    display: flex;
+    flex-direction: row;
+}
+.prampeiros{
+    display: flex;
+    justify-content: center;
+}
+footer{
+    background-color: var(--cor-backg-top-end);
+}
+@media (max-width: 1200px){
+    .segundo-frame{
+        display: hidden;
+    }
+}

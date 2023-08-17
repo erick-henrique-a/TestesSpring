@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="PT-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link th:href="@{/stylePopulacao.css}" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <title>São Paulo FC</title>
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Curriculo Erick</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse itens-nav" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="ingles.html">Inglês <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javas.html">Java</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="boot.html">bootstrap</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cun.html">c#</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-santo-tempero">Meu Objetivo<span class="text-muted"></span></h2>
+      <p>Meu nome é Erick Henrique, possuo inglês fluente, já dei aulas em uma escola profissionalizante, sou estudante de Ciência da Computação e estou atualmente no 6 semestre no Instituto Federal de São Paulo Câmpus Salto.
+
+        Tenho preferência a trabalhar com front-end, possuo conhecimento HTML/CSS e frameworks como Bootstrap 4 e Sass porém também possuo conhecimento em back end com o Spring boot e MySQL, estou buscando minha primeira oportunidade para iniciar minha carreira no mercado de T.I.</p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-fluid mx-auto" src="https://media.licdn.com/dms/image/D4D03AQErv0KHxNxrgA/profile-displayphoto-shrink_800_800/0/1682297744552?e=2147483647&v=beta&t=xrRVQuZfEfMwL3ba_gP2NCDGZ6AqeDK8JW-E8mRYXWk" alt="500x500" style="width: 500px; height: 400px;" data-holder-rendered="true">
+    </div>
+  </div>
+
+  <form class="form-group" method="post" action="/populacao">
+
+    <div class="div-form">
+      <!-- <label class="label" for="limiteAnos">Quantos Anos?:</label>
+<input class="input-box form-control" id="limiteAnos" name="limiteAnos">
+<br>
+
+<label for="qtdPessoas">Maximo de Pessoas:</label>
+<input class="input-box form-control" id="qtdPessoas" name="qtdPessoas">
+<br> -->
+
+      <input class="input-box btn" type="submit" value="Iniciar População">
+    </div>
+
+  </form>
+
+</main>
+
+<footer class="dados">
+  <h4 class="footer-texto">Caso interessado em me contactar:</h4>
+  <div class="contatos">
+    <i class="bi bi-whatsapp" style="color: white;"></i>
+    <h6 class="footer-texto">Telefone: (13) 98836-8662</h6>
+  </div>
+  <div class="contatos">
+    <i class="bi bi-house" style="color: white;"></i>
+    <h6 class="footer-texto">Endereço: Rua origenes Lessa (57) Vila Romão</h6>
+  </div>
+</footer>
+
+</body>
+</html>
