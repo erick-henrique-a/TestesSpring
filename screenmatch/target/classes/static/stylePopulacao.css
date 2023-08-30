@@ -22,8 +22,18 @@
     font-family: 'Poppins', sans-serif;
 }
 .titulo{
-    display: flex;
-    justify-content: center;
+    text-align: center;
+}
+tr{
+    text-align: center;
+    border:.8px solid black;
+}
+th{
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+td{
+    border:.8px solid black;
 }
 .sub-titulo{
     display: flex;
@@ -36,9 +46,21 @@
 .corpo-texto{
     font-family: 'Poppins', sans-serif;
 }
+.grade{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr
+}
 main{
     padding: 1%;
     background-color: var(--cor-backg-body);
+}
+.div-form{
+    display: flex;
+    justify-content: center;
+}
+
+.btnn{
+    text-align: center;
 }
 .dados{
     bottom: 0;

@@ -2,10 +2,13 @@ package br.com.alura.screenmatch.domain.populacao;
 
 import com.github.javafaker.Faker;
 import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
+import java.util.Random;
 
 @Entity
 @Table(name = "populacao")
@@ -13,19 +16,32 @@ public class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     private Long id;
+    @Getter
+    @Setter
     private String nome;
+    @Getter
+    @Setter
     private int idade;
-    private final boolean vivo;
-    private String owMain;
+    @Getter
+    @Setter
+    private boolean vivo;
+    @Getter
+    @Setter
+    private String email;
+    @Getter
+    @Setter
+    private int ano_morte;
+    @Getter
+    private String main_lol;
+    @Getter
+    private String elo;
+    @Getter
+    @Setter
+    private String doenca;
 
 
-    public Pessoa(String nome, int idade, boolean vivo, String owMain) {
-        this.nome = nome;
-        this.idade = idade;
-        this.vivo = true;
-        this.owMain = owMain;
-    }
 
     public Pessoa(String nome, int idade, boolean vivo) {
         this.nome = nome;
@@ -33,23 +49,35 @@ public class Pessoa {
         this.vivo = vivo;
     }
 
+    public Pessoa(String nome, int idade, boolean vivo, String email, String main_lol, String rank) {
+        this.nome = nome;
+        this.idade = idade;
+        this.vivo = vivo;
+        this.email = email;
+        this.main_lol = main_lol;
+        this.elo = rank;
+    }
+
+    public Pessoa(String nome, int idade, boolean vivo, String main_lol, String rank) {
+        this.nome = nome;
+        this.idade = idade;
+        this.vivo = vivo;
+        this.main_lol = main_lol;
+        this.elo = rank;
+    }
     public Pessoa(){
         vivo = true;
     }
 
-
-
-
-    public int getIdade() {
-        return idade;
+    public void Morto(Pessoa pessoa, Faker fake){
+        this.vivo = false;
+        setDoenca(fake.medical().diseaseName());
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public void envelhece(){
-        this.idade++;
+    public void envelhece(boolean vivo){
+        if (vivo){
+            this.idade++;
+        }
     }
 
     public void info() {
@@ -58,67 +86,41 @@ public class Pessoa {
         System.out.println("Está vivo: " + this.vivo +"\n");
     }
 
-
-/// Tentativa com Recursividade
-////    public void cicloDaVida(Pessoa original, ArrayList pessoas, int r, int quantidadeDePessoas){
-////        int counter = 0;
-////        int anos = 0;
-////        int aux = 0;
-////
-////        Faker nome = new Faker();
-////        for (int i = 0; i < r; i++) {
-////            original.envelhece();
-////            if (i == 18 && counter < quantidadeDePessoas)
-////            {
-////                //pessoas[j].info;
-////                Pessoa p = new Pessoa(nome.name().name());
-////
-////                System.out.println("Nova pessoa gerada");
-////                pessoas.add(p);
-////                p.info();
-////                counter++;
-////                if (pessoas.size() > quantidadeDePessoas){
-////                    break;
-////                } else{
-////                    cicloDaVida(p,pessoas, r, quantidadeDePessoas);
-////                }
-//
-////                switch (anos){
-////                    case 20:
-////                        break;
-////                    case
-////                }
-//            }
-//            anos++;
-//            //System.out.println("Idade atual do original: " + original.getIdade());
-//            original.info();
-//            System.out.println("Ano atual: " + anos);
-//        }
-//    }
-
-    public void cicloDaVida(int limiteAnos, int quantidadeDePessoas, ArrayList<Pessoa> povo, PopulacaoRepository repository){
-
+    public void cicloDaVida(int limiteAnos, int anoInicio, PopulacaoRepository repository){
+        ArrayList<Pessoa> povo = new ArrayList<>();
+        Random rand = new Random();
         Faker faker = new Faker(new Locale("pt-BR"));
-        Pessoa adao = new Pessoa("adao",1, true);
+        Pessoa adao = new Pessoa("Adão",1, true, "adao@dimas.com.br", "Garen", "Challenger");
+        adao.setEmail("adao@dimas.com.br");
         repository.save(adao);
         povo.add(adao);
+        faker.medical().diseaseName();
         boolean addPessoa = false;
         for (int i = 0; i < limiteAnos; i++) {
             for (Pessoa e: povo) {
-                e.envelhece();
+                e.envelhece(e.vivo);
                 if (e.getIdade() == 18){
                     addPessoa = true;
+
                 }
+                if (rand.nextInt(1, 1000/e.getIdade()) == 1 && e.getIdade() > 18 && e.isVivo()){
+                    e.Morto(e, faker);
+                    e.setAno_morte(anoInicio);}
             }
             if (addPessoa){
-                Pessoa nova = new Pessoa(faker.name().name(), 1, true, faker.overwatch().hero());
+                Pessoa nova = new Pessoa(faker.name().name(), 1, true, faker.leagueOfLegends().champion(), faker.leagueOfLegends().rank());
+                nova.setEmail(faker.internet().emailAddress(nova.getNome()).replaceAll(" ", "").toLowerCase());
                 povo.add(nova);
-
-                System.out.println(nova.toString() + "batata");
+                repository.save(nova);
                 addPessoa = false;
             }
-
+            anoInicio++;
+            System.out.println(anoInicio);
         }
+        System.out.println("Sem ordenação:");
+        System.out.println(povo);
+        System.out.println("Com ordenação:");
+        Collections.sort(povo, new OrdenaPorAno());
         System.out.println(povo);
     }
 
@@ -129,7 +131,6 @@ public class Pessoa {
                 ", nome='" + nome + '\'' +
                 ", idade=" + idade +
                 ", vivo=" + vivo +
-                ", owMain='" + owMain + '\'' +
                 '}';
     }
 }

@@ -53,11 +53,9 @@ public class FilmeController {
 
     @DeleteMapping
     @Transactional //inicia uma transação com o banco de dados com o Spring
-
     public String deletafilme(Long id){
         repository.deleteById(id);
         return "redirect:filmes/listagem";
     }
-
 
 }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <title>Bootstrap 4</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/home">Curriculo Erick</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse itens-nav" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/ingles">Inglês <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/java">Java</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/boot">Bootstrap</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/cun">C#</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+    <main>
+      <div class="titulo">
+        <h1>Desenvolvi um projeto em C# com a instrução do professor Prampero em complexidade de algoritmos</h1>
+      </div>
+        <div class="prampeiros">
+          <img id="p0"class="prampers" src="https://suap.ifsp.edu.br/media/fotos/75x100/1186.jpg" alt="Foto do C#" style="width: 500px; height: 500px;"  onmouseover="changePramps();" onmouseleave="changePramps();">
+        <img id="p1"src="assets/pramperofeliz.jpg" alt="" class="happy-prampers" style="width: 500px; height: 500px; display: none ;"  onmouseover="changePramps();" onmouseleave="changePramps();">
+      </div>
+    </main>
+    <footer class="dados">
+      <h4 class="footer-texto">Caso interessado em me contactar:</h4>
+      <div class="contatos">
+      <i class="bi bi-whatsapp"  style="color: white;"></i>
+        <h6 class="footer-texto">Telefone: (13) 98836-8662</h6>
+      </div>
+      <div class="contatos">  
+        <i class="bi bi-house"  style="color: white;"></i>
+        <h6 class="footer-texto">Endereço: Rua origenes Lessa (57) Vila Romão</h6>
+      </div>
+  </footer>
+  </body>
+<script>
+  var a=0;
+  function changePramps(){
+    if(a%2 == 0){
+      document.getElementById("p0").style.display = "none";
+      document.getElementById("p1").style.display = "";
+    }else{
+      document.getElementById("p1").style.display = "none";
+      document.getElementById("p0").style.display = "";
+    }
+    a++;  
+  }
+</script>
+</html>
